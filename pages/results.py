@@ -96,11 +96,25 @@ filtered = filtered[
 st.subheader("📊 Sentiment Distribution")
 sentiment_counts = filtered['sentiment'].map({0: 'Negative', 1: 'Positive'}).value_counts()
 
-fig, ax = plt.subplots()
-ax.bar(sentiment_counts.index, sentiment_counts.values, color=['green', 'red'])
-ax.set_ylabel("Tweet Count")
-ax.set_title("Distribution of Sentiment")
-st.pyplot(fig)
+# Bar Chart
+fig_bar, ax_bar = plt.subplots()
+ax_bar.bar(sentiment_counts.index, sentiment_counts.values, color=['green', 'red'])
+ax_bar.set_ylabel("Tweet Count")
+ax_bar.set_title("Distribution of Sentiment (Bar Chart)")
+st.pyplot(fig_bar)
+
+# Pie Chart
+fig_pie, ax_pie = plt.subplots()
+ax_pie.pie(
+    sentiment_counts.values,
+    labels=sentiment_counts.index,
+    autopct='%1.1f%%',
+    startangle=90,
+    colors=['green', 'red']
+)
+ax_pie.axis('equal')
+ax_pie.set_title("Distribution of Sentiment (Pie Chart)")
+st.pyplot(fig_pie)
 
 # WordCloud
 st.subheader("☁️ Trending Keywords (WordCloud)")
