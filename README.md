@@ -147,17 +147,3 @@ Open the provided local URL in your browser, enter a **keyword**, choose a **dat
   Create `pages/results.py` or switch to the inline prediction approach described above.
 
 ---
-
-## 🗺 Roadmap ideas (optional)
-
-- Add a **Results page** with charts (e.g., distribution of predicted probabilities, time series by day).  
-- Add an **Export CSV** of matched tweets with predicted probabilities.  
-- Parameterize thresholds and trend cutoff.  
-- Add caching for faster repeated keyword/date queries.
-
----
-
-## 📄 License
-
-Choose a license (e.g., MIT) and add it here.
-# 2025fyp
