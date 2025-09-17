@@ -73,20 +73,6 @@ with col1:
 with col2:
     sentiment = st.radio("🎯 Sentiment filter", ["Positive", "Negative"], index=0)
 
-# # Predict button
-# if st.button("🚀 Predict"):
-#     if not keyword:
-#         st.warning("Please enter a keyword.")
-#     elif len(date_range) != 2:
-#         st.warning("Please select both start and end dates.")
-#     else:
-#         # Store inputs in session state
-#         st.session_state['keyword'] = keyword
-#         st.session_state['sentiment'] = sentiment
-#         st.session_state['start_date'] = str(date_range[0])
-#         st.session_state['end_date'] = str(date_range[1])
-#         st.switch_page("pages/results.py")  # navigate to results
-
 # Predict button with custom styling
 predict_button = st.button("🚀 Predict")
 
