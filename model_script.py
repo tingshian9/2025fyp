@@ -117,30 +117,7 @@ else:
         pickle.dump(vectorizer, f)
     print("✅ Model and vectorizer saved.")
 
-# Step 10: Predict trend for a list of tweets
-def predict_trend(tweet_list, target_sentiment="Positive", sentiment_threshold=0.6):
-    cleaned = [clean_tweet(t) for t in tweet_list]
-    X_input = vectorizer.transform(cleaned)
-    probas = model.predict_proba(X_input)
-    positive_probs = probas[:, 1]
-
-    if target_sentiment.lower() == "positive":
-        match = positive_probs >= sentiment_threshold
-    else:
-        match = positive_probs <= (1 - sentiment_threshold)
-
-    sentiment_ratio = match.sum() / len(tweet_list)
-    tweet_volume = len(tweet_list)
-    trend_score = sentiment_ratio * np.log1p(tweet_volume)
-
-    return {
-        "trend_score": trend_score,
-        "sentiment_ratio": sentiment_ratio,
-        "tweet_volume": tweet_volume,
-        "will_trend": trend_score > 1.2
-    }
-
-# Step 11: Predict trend based on keyword and date range
+# Step 10: Predict trend based on keyword and date range
 def run_keyword_prediction(keyword, df, sentiment_target="Positive", start_date=None, end_date=None, model=None, vectorizer=None):
     keyword = keyword.lower()
     keyword_tweets = df[df['text'].str.lower().str.contains(keyword, na=False)]
